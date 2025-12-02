@@ -18,9 +18,9 @@ function checkmax(){
 
 function addbook(t,a,p,s)
 {
-    let c=checkmax()+1;
+    let newId=checkmax()+1;
     let newb={
-        id:c,
+        id:newId,
         titre:t,
         auteur:a,
         prix:p,
