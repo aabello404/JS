@@ -33,3 +33,19 @@ additem("PEN",100);
 remove("PHONE");
 console.log(panier);
 a=total(panier);
+
+let az=[1,2,3];
+function multiply(a,callback)
+{
+    let d=[];
+    for(item of a)
+    {
+        if(callback(item))
+        {
+            d.push(item*10);
+        }
+    }
+    return d;
+}
+  
+console.log(multiply(az,(item)=>item>1));
