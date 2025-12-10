@@ -59,7 +59,6 @@ function updateStock(ir,newStock)
 };
 
 
-
 function sortbyPrice()
 {
    return  Books.sort(function(a,b){return a.prix-b.prix});     

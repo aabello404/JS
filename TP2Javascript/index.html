@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Simple Page</title>
+
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --accent:#4a90e2;
+      --muted:#6b7280;
+      --danger:#e24a4a;
+      --radius:12px;
+      --shadow: 0 6px 18px rgba(18,38,63,0.08);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at -10% 10%, rgba(74,144,226,0.06), transparent 10%),
+        linear-gradient(180deg, var(--bg), #f7fbff);
+      display:grid;
+      place-items:center;
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+    }
+
+    .card{
+      width:100%;
+      max-width:420px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+      border:1px solid rgba(15,23,36,0.04);
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .logo {
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      display:inline-grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent), #2b6edb);
+      color:white;
+      font-weight:700;
+      font-size:18px;
+      box-shadow:0 6px 18px rgba(74,144,226,0.12);
+    }
+
+    h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-0.2px;
+    }
+
+    p.lead{
+      margin:8px 0 18px 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    form{
+      display:grid;
+      gap:12px;
+    }
+
+    label{
+      font-size:13px;
+      display:block;
+      margin-bottom:6px;
+      color:#111827;
+    }
+
+    .input-row{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    input[type="email"],
+    input[type="password"]{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(15,23,36,0.08);
+      background:transparent;
+      font-size:14px;
+      transition:box-shadow .15s, border-color .15s;
+    }
+
+    input:focus{
+      outline:none;
+      border-color: rgba(74,144,226,0.9);
+      box-shadow: 0 6px 18px rgba(74,144,226,0.12);
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:13px;
+      color:var(--muted);
+      margin-top:4px;
+      margin-bottom:2px;
+    }
+
+    .checkbox{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    button{
+      appearance:none;
+      border:0;
+      background:var(--accent);
+      color:white;
+      padding:12px 14px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      font-size:15px;
+      transition:transform .08s ease, box-shadow .12s;
+    }
+
+    button:active{ transform:translateY(1px) }
+    button[disabled]{ opacity:0.6; cursor:default; }
+
+    .secondary{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(74,144,226,0.12);
+    }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+      text-align:center;
+      margin-top:14px;
+    }
+
+    .error{
+      color:var(--danger);
+      font-size:13px;
+      margin-top:6px;
+    }
+
+    .password-toggle{
+      background:transparent;
+      border:0;
+      font-size:13px;
+      color:var(--muted);
+      cursor:pointer;
+      padding:8px;
+      border-radius:8px;
+    }
+
+    /* responsive */
+    @media (max-width:420px){
+      .card{ padding:20px; border-radius:10px }
+      .logo{ width:44px; height:44px }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="signin-title">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="true">LP</div>
+      <div>
+        <h1 id="signin-title">Welcome back</h1>
+        <p class="lead">Sign in to continue to your account</p>
+      </div>
+    </div>
+
+    <form id="loginForm" autocomplete="on" novalidate>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required aria-required="true" />
+        <div id="emailError" class="error" role="alert" aria-live="polite" style="display:none"></div>
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <div class="input-row">
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required aria-required="true" />
+          <button type="button" class="password-toggle" id="pwToggle" aria-pressed="false" aria-label="Show password">Show</button>
+        </div>
+        <div id="passwordError" class="error" role="alert" aria-live="polite" style="display:none"></div>
+      </div>
+
+      <div class="meta">
+        <label class="checkbox">
+          <input type="checkbox" id="remember" name="remember" />
+          <span>Remember me</span>
+        </label>
+        <a href="#" id="forgotLink">Forgot password?</a>
+      </div>
+
+      <div>
+        <button id="submitBtn" type="submit">Sign in</button>
+      </div>
+    </form>
+
+    <div class="small" id="status" aria-live="polite"></div>
+  </main>
+
+  <script>
+    (function(){
+      const form = document.getElementById('loginForm');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      const status = document.getElementById('status');
+      const submitBtn = document.getElementById('submitBtn');
+      const pwToggle = document.getElementById('pwToggle');
+
+      // Show / hide password
+      pwToggle.addEventListener('click', () => {
+        const isHidden = password.type === 'password';
+        password.type = isHidden ? 'text' : 'password';
+        pwToggle.textContent = isHidden ? 'Hide' : 'Show';
+        pwToggle.setAttribute('aria-pressed', String(isHidden));
+      });
+
+      // Simple client-side validation helper
+      function validate() {
+        let ok = true;
+        emailError.style.display = 'none';
+        passwordError.style.display = 'none';
+        status.textContent = '';
+
+        if (!email.value) {
+          emailError.textContent = 'Email is required';
+          emailError.style.display = '';
+          ok = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+          emailError.textContent = 'Please enter a valid email address';
+          emailError.style.display = '';
+          ok = false;
+        }
+
+        if (!password.value) {
+          passwordError.textContent = 'Password is required';
+          passwordError.style.display = '';
+          ok = false;
+        } else if (password.value.length < 6) {
+          passwordError.textContent = 'Password must be at least 6 characters';
+          passwordError.style.display = '';
+          ok = false;
+        }
+
+        return ok;
+      }
+
+      // Intercept submit (example: simulate login)
+      form.addEventListener('submit', function(ev){
+        ev.preventDefault();
+
+        if (!validate()) return;
+
+        // disable form while "logging in"
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Signing in...';
+        status.textContent = '';
+
+        // Simulate a server request with setTimeout (replace with real fetch)
+        setTimeout(() => {
+          // For demo: treat any password "password123" as wrong to show error handling
+          if (password.value === 'password123') {
+            passwordError.textContent = 'Incorrect password';
+            passwordError.style.display = '';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Sign in';
+            status.textContent = '';
+            password.focus();
+            return;
+          }
+
+          // On "success"
+          submitBtn.textContent = 'Signed in';
+          status.textContent = 'Login successful — redirecting...';
+          // Real app: redirect with window.location = '/dashboard' or similar
+          // For demo we re-enable after a moment
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Sign in';
+            status.textContent = '';
+            form.reset();
+          }, 1000);
+        }, 900);
+      });
+
+      // Accessibility: press Enter on toggle shouldn't submit the form accidentally
+      pwToggle.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          pwToggle.click();
+        }
+      });
+
+    })();
+  </script>
+  <script src="JSEX3.js"></script>
+
+</body>
+</html>
