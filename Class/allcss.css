@@ -1,0 +1,38 @@
+  body{
+            background-color: #1E1E1E;
+            color:white;
+            align-content:center;
+            align-items:center;
+        }
+        #listn li{
+            background-color: blanchedalmond;
+            padding: 9px;
+            font-size: larger;
+            border-radius: 10px;
+            margin: 3px;
+            text-align: center;
+            display:flex;
+            justify-content:space-between ;
+        }
+        div.box{
+            border-radius: 8px;
+            background-color: beige;
+            height: 500px;
+            padding:10px;
+            color:black
+        }
+        body div input {
+            border-radius: 14%;
+            padding: 7px;
+        }
+        .done{
+            text-decoration: line-through;
+            background-color: green  !important;
+        }
+        .btn{
+    
+            padding: 4px;
+            border-radius:9px ;
+            margin-left: 8px;
+
+        }
