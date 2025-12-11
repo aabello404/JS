@@ -1,0 +1,115 @@
+  body{
+            background-color: #1E1E1E;
+            color:white;
+            align-content:center;
+            align-items:center;
+            
+        }
+             
+        ul{
+            max-width: 100%  !important;
+            padding: 0px;
+        }
+        ul li{
+            padding: 9px;
+            font-size: larger;
+            border-radius: 10px;
+            margin: 3px;
+            border-style: solid;
+            border-color: aliceblue;
+            border-width: 1px;
+            text-align: center;
+            display:flex;
+            justify-content:space-between ;
+            max-width: 100%;
+            list-style: none;
+        }
+        div.box{
+            border-radius: 8px;
+            background-color: #1E1E1E;
+            height: 500px;
+            padding:10px;
+            width: 50%;
+            margin: auto;
+            color:rgb(255, 255, 255);
+            box-shadow: 0px 1px 4px whitesmoke;
+            overflow: scroll;
+        }
+        div.box::-webkit-scrollbar{
+            display: none;
+        }
+        body div input {
+            border-radius: 14%;
+            padding: 7px;
+        }
+        .done{
+            text-decoration: line-through;
+            background-color: green  !important;
+        }
+        .amt{
+
+                background-color: #1E1E1E;
+                color: rgb(255, 255, 255);
+                padding: 1px ;
+                text-align:center;
+                width:25px;
+                height: 20px;
+                overflow: hidden;
+                display: inline-block;
+                
+        }
+        .btn{
+    
+            padding: 4px;
+            border-radius:9px ;
+            margin-left: 8px;
+            background-color: #696767;
+            color:white;
+        }
+        .btnc{
+    
+            padding: 4px;
+            border-radius:9px ;
+            width: 100%;
+            margin-top: 8px;
+            color:white;
+            background-color: #696767;
+            display: block;
+
+        }
+
+        .btnplusminus{
+            background-color: #696767;
+            border-radius: 69px;
+            margin: 1px 4px;
+                color:white;
+        }
+        .mrgdiv{
+            display: flex;
+            max-width: 100%;
+        }
+        .dvup{
+            display: flex;
+            justify-content: space-between;
+        }
+        .dvspan{
+            
+            position: relative;
+
+        }
+        
+        .divul{
+            max-width: 100%;
+        }
+        #cart-count{
+            background-color: red;
+            border-radius: 50%;
+            padding: 2px;
+            position:absolute;
+            font-size: large;
+            top: -5px;
+            right: -3px;
+        }
+        .sp1{
+            font-size:25px;
+        }
