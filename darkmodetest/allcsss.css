@@ -1,0 +1,28 @@
+body{
+    background-color: #1E1E1E;
+    align-content: center;
+    justify-content: center;
+}
+.newbody{
+    background-color: white;
+}
+img{
+    border-radius: 50%;
+    width: 50px;
+    height: 60px;
+     position: absolute;
+    right:-0.2px;
+}
+div{
+   
+    
+    width: fit-content;
+    border-radius: 50%;
+}
+div:hover{
+    background-color: #1E1E1E;
+}
+p{
+    color:red;
+    font-size: larger;
+}
