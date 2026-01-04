@@ -31,11 +31,13 @@ function count()
     isrunning=true;
     
    }
+
  function ftimer()
 {     
     if(iptvalue===0){
         resetcounter();
-         parag.style.display="block";
+        btnstrt.innerText="START"
+        parag.style.display="block";
         return;
     } 
     let gethours= Math.floor(iptvalue/(60*60))%24;
@@ -55,6 +57,9 @@ function count()
 function pausecount()
 {
     clearInterval(timer);
+    if(iptvalue>0){
+        btnstrt.innerText="RESUME";
+    }
     isrunning=false;
 
 }
@@ -63,6 +68,7 @@ function resetcounter()
     clearInterval(timer);
     isrunning=false;
     iptvalue=0;
+    btnstrt.innerText="START"
     spanval.textContent="00:00:00";
     parag.style.display="none";
 }
@@ -71,3 +77,10 @@ function resetcounter()
 
 
 
+function check(sleep)
+{
+    console.log("hello2");
+}
+function sleep(){
+    console.log("hello");
+}

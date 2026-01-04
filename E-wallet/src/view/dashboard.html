@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord E-Wallet</title>
+  <link rel="stylesheet" href="/E-wallet/src/css/dashboard.css">
+  <script type="module" src="/E-wallet/src/controller/securesite.js"></script>
+  <script type="module"  src="/E-wallet/src/controller/transfer.js" defer></script>
+  <script type="module" src="/E-wallet/src/controller/Recherger.js" defer></script>
+  <script type="module" src="/E-wallet/src/controller/payer.js" defer></script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="/E-wallet/assets/e-Wallet6.gif" alt="Logo E-Wallet">
+      <h2>E-Wallet</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="active"><a href="#">Tableau de bord</a></li>
+      <li><a href="#">Transactions</a></li>
+      <li><a href="#">Envoyer</a></li>
+      <li><a href="#">Profil</a></li>
+      <li><a href="index.html">Se déconnecter</a></li>
+    </ul>
+  </aside>
+
+  <!-- Contenu principal -->
+  <main class="main-content">
+    <header class="topbar">
+      <h1 id="welcome_message"> </h1>
+      <span id="date" class="topbar-date"> </span>
+    </header>
+
+    <!-- Cartes du dashboard -->
+    <section class="dashboard-cards">
+      <div class="card balance-card">
+        <h3>Solde total</h3>
+        <h1 id="balance"> </h1>
+        <!-- Actions -->
+  <div class="card-actions">
+    <button type="button" id="transferer">
+      <img src="/E-wallet/assets/depot.png" alt="Transférer">
+      Transférer
+    </button>
+
+    <button type="button" id="recharger">
+      <img src="/E-wallet/assets/trans.png" alt="Recharger">
+      Recharger
+    </button>
+
+    <button type="button" id="payer">
+      <img src="/E-wallet/assets/payer.png" alt="Payer">
+      Payer
+    </button>
+  </div>
+      </div>
+
+      <div class="card stats-card">
+        <h3>Transactions récentes</h3>
+        <table id ="transactions" class="transactions-table">
+          <thead>
+        <tr>
+         <th>Date</th>
+         <th>Description</th>
+         <th>Type</th>
+         <th>Montant</th>
+         </tr>
+     </thead>
+       <tbody id="tbody">
+    <!-- Les transactions seront injectées ici -->
+     
+      
+     
+     </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="actions-holder">
+      <div class="action-pop-up" >
+        <div class="ipt">
+          <div class="actiondone">
+         </div>
+          <h3>Transfers</h3>
+          <div class="iptspan">
+            <input type="text" name="Beneficiary" id ="Beneficiary" placeholder="Beneficiary(ID)" autocomplete="off">
+            <span class="error" id="ben-error"></span>
+          </div>
+          <div class="iptspan">
+            <input type="text" name="amount" id ="amount" placeholder="Amount(DH)" autocomplete="off">
+            <span class="error" id="amt-error"></span>
+          </div>
+         <div id="current-action">
+          <button type="button" id="make-transfer">TRANSFER</button>
+          <img src="/E-wallet/assets/Loading_icon.gif" alt="loading" class="loading" id="loading">
+         </div> 
+         
+        </div>
+        <div class="svg-cancel" id="cancelsvg">
+          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="black"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </div>
+      </div>
+      
+    </div>
+      <div class="actions-holder-recherger">
+      <div class="action-pop-up" id="Recherger-pop-up">
+        <div class="ipt">
+          <div class="actiondone" id="recherger-done">
+         </div>
+          <h3>ADD FUNDS</h3>
+          <div class="iptspan">
+           <select name="service" id="savedWallets" title="service-provider" >
+            <option value="none" selected>Linked cards and banks</option>
+           </select>
+            <span class="error" id="method-error-recherger"></span>
+          </div>
+          <div class="iptspan">
+            <input type="number" name="amount-recherger" id ="amount-recherger" placeholder="Amount(DH)" autocomplete="off">
+            <span class="error" id="amt-error-recherger"></span>
+          </div>
+          <div id="current-action">
+          <button type="button" id="make-recherge">RECHERGER</button>
+          <svg class="loader" id="load-recharger" viewBox="0 0 50 50">
+              <circle class="path" cx="25" cy="25" r="20"></circle>
+          </svg>
+         </div> 
+         
+        </div>
+        <div class="svg-cancel" id="cancelsvg-on-recherger">
+          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="black"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </div>
+      </div>
+      
+    </div>
+
+    </div>
+      <div class="actions-holder-payer">
+      <div class="action-pop-up" id="payer-pop-up">
+        <div class="ipt">
+          <div class="actiondone" id="payer-done">
+         </div>
+          <h3>FACTURE</h3>
+          <div class="iptspan">
+            <input type="tel" name="number" id ="number-payer" placeholder="Numéro tel" autocomplete="off">
+            <span class="error" id="number-error-payer"></span>
+          </div>
+          <div class="iptspan">
+            <input type="text" name="amount-payer" id ="amount-payer" placeholder="Amount(DH)" autocomplete="off">
+            <span class="error" id="amt-error-payer"></span>
+          </div>
+          <div class="iptspan">
+           <select name="service" id="service-network" title="service-provider" >
+            <option value="0" selected>select service provider</option>
+            <option value="1">INWI</option>
+            <option value="2">IAM</option>
+            <option value="3">ORANGE</option>
+           </select>
+          </div>
+
+          <div id="current-action">
+          <button type="button" id="make-payer">PAYER</button>
+          <img src="/E-wallet/assets/Loading_icon.gif" alt="loading" class="loading" id="loading-on-payer">
+         </div> 
+         
+        </div>
+        <div class="svg-cancel" id="cancelsvg-on-payer">
+          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="black"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  <script type="module" src="/E-wallet/src/controller/dasboard.js"> </script>
+</body>
+</html>
